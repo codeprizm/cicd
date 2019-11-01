@@ -4,7 +4,7 @@ var_2: &default_docker_image circleci/node:10.12-browsers
 
 # Settings common to each job
 var_3: &job_defaults
-  working_directory: ~/ngfeatures
+  working_directory: ~/cicd
   docker:
     - image: *default_docker_image
 
@@ -44,15 +44,6 @@ jobs:
         key: *cache_key
     - *npm_install
     - run: npm run test
-  e2etest:
-    <<: *job_defaults
-    steps:
-    - checkout
-    - restore_cache:
-        key: *cache_key
-    - *npm_install
-    - run: npm run e2e
-
   e2etest:
     <<: *job_defaults
     steps:
