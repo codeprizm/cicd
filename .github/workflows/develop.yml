@@ -1,0 +1,17 @@
+name: Develop Workflow
+# This workflow is triggered on pull requests to the develop branch only.
+on: 
+  pull_request: 
+    branches: 
+      - develop
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Install Packages
+      run: npm ci
+    - name:  Build
+      run: |
+        npm run build,
+        npm run test.
