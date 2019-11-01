@@ -40,3 +40,55 @@ jobs:
 
       - name: Build Alpha Package
         run: npm run build   
+  ts-lint-affected: 
+    runs-on: ubuntu-latest
+    needs: [build]
+    steps: 
+      - uses: actions/checkout@v1
+      
+      - name: Cache node modules
+        uses: actions/cache@preview
+        id: cache
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Lint - TypeScript
+        run: npm run affected:lint
+
+  unit-test-affected: 
+    runs-on: ubuntu-latest
+    needs: [build]
+    steps: 
+      - uses: actions/checkout@v1
+      
+      - name: Cache node modules
+        uses: actions/cache@preview
+        id: cache
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Unit Tests Affected
+        run: npm run affected:test
+  e2e-affected: 
+    runs-on: ubuntu-latest
+    needs: [build]
+    steps: 
+      - uses: actions/checkout@v1
+      
+      - name: Cache node modules
+        uses: actions/cache@preview
+        id: cache
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: E2E Affected
+        run: npm run affected:e2e
