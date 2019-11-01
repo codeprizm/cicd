@@ -56,7 +56,7 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: Lint - TypeScript
-        run: npm run affected:lint
+        run: npm run lint
 
   unit-test-affected: 
     runs-on: ubuntu-latest
