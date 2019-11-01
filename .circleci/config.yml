@@ -48,15 +48,6 @@ jobs:
     <<: *job_defaults
     steps:
     - checkout
-    - restore_cache:
-        key: *cache_key
-    - *npm_install
-    - run: npm run e2e
-
-  e2etest:
-    <<: *job_defaults
-    steps:
-    - checkout
     - run:
         name: Install Chrome
         command: |
