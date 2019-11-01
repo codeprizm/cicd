@@ -5,14 +5,15 @@ on:
     branches: 
       - develop
 jobs:
-  build:
+  install:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
     - name: Install Packages
       run: npm ci
-    - name:  Build
-      run: |
-        #npm ci
-        npm run build
-        npm run test
+  build: 
+    runs-on: ubuntu-latest
+    needs: [install]
+    steps:
+          - name: Build Alpha Package
+            run: npm run build    
