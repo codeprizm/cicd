@@ -35,7 +35,7 @@ jobs:
     - restore_cache:
         key: *cache_key
     - *npm_install
-    - run: npm run build
+    - run: npm run affected:build -- --base=origin/develop --head=HEAD
     - *save_cache
   unittest:
     <<: *job_defaults
@@ -44,7 +44,7 @@ jobs:
     - restore_cache:
         key: *cache_key
     - *npm_install
-    - run: npm run test
+    - run: npm run affected:test -- --base=origin/develop --head=HEAD
   e2etest:
     <<: *job_defaults
     steps:
@@ -59,7 +59,7 @@ jobs:
     - restore_cache:
         key: *cache_key
     - *npm_install
-    - run: npm run e2e
+    - run: npm run affected:e2e -- --base=origin/develop --head=HEAD
 
 workflows:
   version: 2
