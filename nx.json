@@ -13,6 +13,18 @@
     },
     "ngdemo": {
       "tags": []
+    },
+    "lib1": {
+      "tags": []
+    },
+    "lib2": {
+      "tags": []
+    },
+    "ngdemo2-e2e": {
+      "tags": []
+    },
+    "ngdemo2": {
+      "tags": []
     }
   }
 }
