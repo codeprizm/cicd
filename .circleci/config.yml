@@ -35,7 +35,7 @@ jobs:
     - restore_cache:
         key: *cache_key
     - *npm_install
-    - run: npm run build
+    - run: npm run affected-develop:build
     - *save_cache
   unittest:
     <<: *job_defaults
