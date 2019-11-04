@@ -39,7 +39,7 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: Build Alpha Package
-        run: npm run build   
+        run: npm run affected:build -- --base=origin/develop --head=HEAD
   ts-lint-affected: 
     runs-on: ubuntu-latest
     needs: [build]
@@ -56,7 +56,7 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: Lint - TypeScript
-        # run: npm run affected:lint --base=origin/master
+        #run: npm run affected:lint -- --base=origin/master
         run: npm run lint
 
   unit-test-affected: 
