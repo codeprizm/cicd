@@ -21,8 +21,14 @@
             "polyfills": "apps/ngdemo/src/polyfills.ts",
             "tsConfig": "apps/ngdemo/tsconfig.app.json",
             "aot": false,
-            "assets": ["apps/ngdemo/src/favicon.ico", "apps/ngdemo/src/assets"],
-            "styles": ["apps/ngdemo/src/styles.scss"],
+            "assets": [
+              "apps/ngdemo/src/favicon.ico",
+              "apps/ngdemo/src/assets"
+            ],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "apps/ngdemo/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -81,7 +87,10 @@
               "apps/ngdemo/tsconfig.app.json",
               "apps/ngdemo/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/ngdemo/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/ngdemo/**"
+            ]
           }
         },
         "test": {
@@ -115,8 +124,13 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/ngdemo-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/ngdemo-e2e/**"]
+            "tsConfig": [
+              "apps/ngdemo-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/ngdemo-e2e/**"
+            ]
           }
         }
       }
@@ -134,7 +148,10 @@
               "libs/lib1/tsconfig.lib.json",
               "libs/lib1/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/lib1/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/lib1/**"
+            ]
           }
         },
         "test": {
@@ -165,7 +182,10 @@
               "libs/lib2/tsconfig.lib.json",
               "libs/lib2/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/lib2/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/lib2/**"
+            ]
           }
         },
         "test": {
@@ -207,7 +227,9 @@
               "apps/ngdemo2/src/favicon.ico",
               "apps/ngdemo2/src/assets"
             ],
-            "styles": ["apps/ngdemo2/src/styles.scss"],
+            "styles": [
+              "apps/ngdemo2/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -266,7 +288,10 @@
               "apps/ngdemo2/tsconfig.app.json",
               "apps/ngdemo2/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/ngdemo2/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/ngdemo2/**"
+            ]
           }
         },
         "test": {
@@ -300,8 +325,13 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/ngdemo2-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/ngdemo2-e2e/**"]
+            "tsConfig": [
+              "apps/ngdemo2-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/ngdemo2-e2e/**"
+            ]
           }
         }
       }

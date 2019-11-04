@@ -18,7 +18,7 @@ jobs:
         key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
         restore-keys: |
           ${{ runner.os }}-node-
-    
+     
     - name: Install Packages
       if: steps.cache.outputs.cache-hit != 'true'
       run: npm ci
@@ -91,7 +91,8 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
-
+      - name : Install Cypress
+        run: npm run cypress-install
       - name: E2E Affected
         # run: npm run affected:e2e --base=origin/master
         run: npm run e2e

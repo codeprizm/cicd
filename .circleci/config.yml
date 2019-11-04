@@ -13,6 +13,7 @@ var_4: &save_cache
     key: *cache_key
     paths:
     - "node_modules/"
+    - "/home/circleci/.cache/Cypress"
 
 var_5: &npm_install
   run: npm install
