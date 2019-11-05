@@ -1,22 +1,22 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HelloWorldComponent } from './hello-world.component';
+import { Lib2cmpComponent } from './lib2cmp.component';
 import { Lib3Module } from '@ngdev/lib3';
 
-describe('HelloWorldComponent', () => {
-  let component: HelloWorldComponent;
-  let fixture: ComponentFixture<HelloWorldComponent>;
+describe('Lib2cmpComponent', () => {
+  let component: Lib2cmpComponent;
+  let fixture: ComponentFixture<Lib2cmpComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [HelloWorldComponent],
-      imports: [Lib3Module]
+      declarations: [ Lib2cmpComponent ],
+      imports : [ Lib3Module]
     })
-      .compileComponents();
+    .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HelloWorldComponent);
+    fixture = TestBed.createComponent(Lib2cmpComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
