@@ -5,7 +5,7 @@ import { Lib1Module } from '@ngdev/lib1';
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [AppComponent],
+      declarations: [AppComponent, Lib1Module],
       imports: [Lib1Module]
     }).compileComponents();
   }));
