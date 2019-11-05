@@ -13,6 +13,7 @@ var_4: &save_cache
     key: *cache_key
     paths:
     - "node_modules/"
+    - "/home/circleci/.cache/Cypress"
 
 var_5: &npm_install
   run: npm install
@@ -34,7 +35,7 @@ jobs:
     - restore_cache:
         key: *cache_key
     - *npm_install
-    - run: npm run build
+    - run: npm run affected:build -- --base=origin/develop --head=HEAD
     - *save_cache
   unittest:
     <<: *job_defaults
@@ -43,7 +44,7 @@ jobs:
     - restore_cache:
         key: *cache_key
     - *npm_install
-    - run: npm run test
+    - run: npm run affected:test -- --base=origin/develop --head=HEAD
   e2etest:
     <<: *job_defaults
     steps:
@@ -58,7 +59,7 @@ jobs:
     - restore_cache:
         key: *cache_key
     - *npm_install
-    - run: npm run e2e
+    - run: npm run affected:e2e -- --base=origin/develop --head=HEAD
 
 workflows:
   version: 2
@@ -67,8 +68,8 @@ workflows:
       - build:
           filters: 
                 branches: 
-                  only: 
-                    - develop
+                  ignore: 
+                    - /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(-[a-zA-Z\d][-a-zA-Z.\d]*)?(\+[a-zA-Z\d][-a-zA-Z.\d]*)?$/
       - lint:
           requires:
             - build
