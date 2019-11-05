@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HelloWorldComponent } from './hello-world.component';
+import { Lib3Module } from '@ngdev/lib3';
 
 describe('HelloWorldComponent', () => {
   let component: HelloWorldComponent;
@@ -8,9 +9,10 @@ describe('HelloWorldComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HelloWorldComponent ]
+      declarations: [HelloWorldComponent],
+      imports: [Lib3Module]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
