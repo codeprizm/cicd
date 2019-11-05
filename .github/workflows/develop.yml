@@ -40,6 +40,14 @@ jobs:
 
       - name: Build Alpha Package
         run: npm run affected:build -- --base=origin/develop --head=HEAD
+      
+      - name: Upload Artifacts - Build
+        uses: actions/upload-artifact@master
+        with:
+          name: build
+          # only one application for demo
+          path: dist/ngdemo
+
   ts-lint-affected: 
     runs-on: ubuntu-latest
     needs: [build]
