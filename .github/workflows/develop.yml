@@ -41,16 +41,13 @@ jobs:
       - name: Build Alpha Package
         run: npm run affected:build -- --base=origin/develop --head=HEAD
       
-      - shell: bash
-        run: ls > lst.txt
-
-      - name: Upload Artifacts - Build
+      - name: Archive Build - Artifacts
         uses: actions/upload-artifact@master
         with:
           name: build
           # only one application for demo
-          # path: dist/ngdemo
-          path: lst.txt
+          path: dist
+          
 
   ts-lint-affected: 
     runs-on: ubuntu-latest
