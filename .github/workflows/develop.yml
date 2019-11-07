@@ -86,7 +86,7 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: 🎨 Lint - SCSS
-        run: npm run stylelint --config .stylelintrc "**/*.scss" --cache --cache-location ".stylelint/.stylelint-cache"
+        run: npm run stylelint"
 
   unit-test-affected:
     name: 🧪 Unit Tests Affected

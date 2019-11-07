@@ -12,86 +12,99 @@ var_4: &save_cache
   save_cache:
     key: *cache_key
     paths:
-    - "node_modules/"
-    - "/home/circleci/.cache/Cypress"
+      - 'node_modules/'
+      - '/home/circleci/.cache/Cypress'
 
 var_5: &npm_install
   run: npm install
 
 jobs:
-  lint:
+  ts-lint:
     <<: *job_defaults
     steps:
-    - checkout    
-    - restore_cache:
-        key: *cache_key
-    - *npm_install
-    - run: npm run lint
-    - *save_cache
+      - checkout
+      - restore_cache:
+          key: *cache_key
+      - *npm_install
+      - run: npm run lint
+      - *save_cache
+  stylelint:
+    <<: *job_defaults
+    steps:
+      - checkout
+      - restore_cache:
+          key: *cache_key
+      - *npm_install
+      - run: npm run stylelint
+      - *save_cache
   build:
     <<: *job_defaults
     steps:
-    - checkout    
-    - restore_cache:
-        key: *cache_key
-    - *npm_install
-    - run: npm run affected:build -- --base=origin/develop --head=HEAD
-    - *save_cache
+      - checkout
+      - restore_cache:
+          key: *cache_key
+      - *npm_install
+      - run: npm run affected:build -- --base=origin/develop --head=HEAD
+      - *save_cache
   unittest:
     <<: *job_defaults
     steps:
-    - checkout
-    - restore_cache:
-        key: *cache_key
-    - *npm_install
-    - run: npm run affected:test -- --base=origin/develop --head=HEAD
+      - checkout
+      - restore_cache:
+          key: *cache_key
+      - *npm_install
+      - run: npm run affected:test -- --base=origin/develop --head=HEAD
   e2etest:
     <<: *job_defaults
     steps:
-    - checkout
-    - run:
-        name: Install Chrome
-        command: |
-          curl -L -o google-chrome.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-          sudo dpkg -i google-chrome.deb
-          sudo sed -i 's|HERE/chrome\"|HERE/chrome\" --disable-setuid-sandbox|g' /opt/google/chrome/google-chrome
-          rm google-chrome.deb
-    - restore_cache:
-        key: *cache_key
-    - *npm_install
-    - run: npm run affected:e2e -- --base=origin/develop --head=HEAD
+      - checkout
+      - run:
+          name: Install Chrome
+          command: |
+            curl -L -o google-chrome.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+            sudo dpkg -i google-chrome.deb
+            sudo sed -i 's|HERE/chrome\"|HERE/chrome\" --disable-setuid-sandbox|g' /opt/google/chrome/google-chrome
+            rm google-chrome.deb
+      - restore_cache:
+          key: *cache_key
+      - *npm_install
+      - run: npm run affected:e2e -- --base=origin/develop --head=HEAD
 
 workflows:
   version: 2
   develop_workflow:
     jobs:
       - build:
-          filters: 
-                branches: 
-                  ignore: 
-                    - /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(-[a-zA-Z\d][-a-zA-Z.\d]*)?(\+[a-zA-Z\d][-a-zA-Z.\d]*)?$/
-      - lint:
+          filters:
+            branches:
+              ignore:
+                - /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(-[a-zA-Z\d][-a-zA-Z.\d]*)?(\+[a-zA-Z\d][-a-zA-Z.\d]*)?$/
+      - ts-lint:
           requires:
             - build
+      - stylelint:
+          requires: -build
       - unittest:
           requires:
             - build
       - e2etest:
           requires:
-            - build     
+            - build
   release_workflow:
     jobs:
       - build:
-          filters: 
-                branches: 
-                  only: 
-                    - /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(-[a-zA-Z\d][-a-zA-Z.\d]*)?(\+[a-zA-Z\d][-a-zA-Z.\d]*)?$/
-      - lint:
+          filters:
+            branches:
+              only:
+                - /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(-[a-zA-Z\d][-a-zA-Z.\d]*)?(\+[a-zA-Z\d][-a-zA-Z.\d]*)?$/
+      - ts-lint:
           requires:
             - build
+      - stylelint:
+          requires: -build
       - unittest:
           requires:
             - build
       - e2etest:
           requires:
-            - build         
+            - build
