@@ -1,0 +1,271 @@
+{
+  "plugins": [
+    "stylelint-declaration-block-no-ignored-properties",
+    "stylelint-declaration-strict-value",
+    "stylelint-high-performance-animation"
+  ],
+  "defaultSeverity": "warning",
+  "rules": {
+    "plugin/declaration-block-no-ignored-properties": true,
+
+    "scale-unlimited/declaration-strict-value": [
+      ["/color/", "fill", "stroke", "font-family", "font-size"], {
+        "ignoreKeywords": {
+          "/color/": ["currentColor", "inherit", "transparent"],
+          "fill": ["currentColor", "inherit", "transparent"],
+          "stroke": ["currentColor", "inherit", "transparent"],
+          "font-family": "inherit",
+          "font-size": ["100%", "inherit"]
+        },
+        "message": "Use variables or custom properties whenever possible."
+      }
+    ],
+
+    "plugin/no-low-performance-animation-properties": [true, {
+      "ignore": "paint-properties"
+    }],
+
+    "font-family-no-duplicate-names": true,
+    "font-family-no-missing-generic-family-keyword": true,
+
+    "function-calc-no-invalid": true,
+    "function-calc-no-unspaced-operator": [true, {
+      "severity": "error"
+    }],
+    "function-linear-gradient-no-nonstandard-direction": [true, {
+      "severity": "error"
+    }],
+
+    "string-no-newline": true,
+
+    "unit-no-unknown": true,
+
+    "property-no-unknown": true,
+
+    "keyframe-declaration-no-important": true,
+
+    "declaration-block-no-duplicate-properties": [true, {
+      "ignore": [
+        "consecutive-duplicates-with-different-values"
+      ],
+      "severity": "error"
+    }],
+    "declaration-block-no-shorthand-property-overrides": [true, {
+      "severity": "error"
+    }],
+
+    "block-no-empty": true,
+
+    "selector-pseudo-class-no-unknown": [true, {
+      "severity": "error"
+    }],
+    "selector-pseudo-element-no-unknown": [true, {
+      "severity": "error"
+    }],
+    "selector-type-no-unknown": [true, {
+      "ignoreTypes": [
+        "/^cdk-/",
+        "/^mat-/",
+        "/^ca-/"
+      ],
+      "severity": "error"
+    }],
+
+    "media-feature-name-no-unknown": [true, {
+      "severity": "error"
+    }],
+
+    "at-rule-no-unknown": [true, {
+      "ignoreAtRules": [
+        "forward",
+        "use",
+        "include",
+        "extend"
+      ],
+      "severity": "error"
+    }],
+
+    "comment-no-empty": true,
+
+    "no-duplicate-at-import-rules": true,
+    "no-duplicate-selectors": true,
+    "no-extra-semicolons": true,
+
+    "color-named": ["never", {
+      "severity": "error"
+    }],
+    "color-no-hex": [true, {
+      "severity": "error"
+    }],
+
+    "function-url-no-scheme-relative": true,
+
+    "number-max-precision": 3,
+
+    "time-min-milliseconds": [150, {
+      "message": "Anything shorter than 150ms/1.5s is imperceptible to (human) users."
+    }],
+
+    "shorthand-property-no-redundant-values": true,
+
+    "custom-property-empty-line-before": ["always", {
+      "except": [
+        "after-comment",
+        "after-custom-property",
+        "first-nested"
+      ]
+    }],
+
+    "value-no-vendor-prefix": true,
+
+    "property-no-vendor-prefix": true,
+
+    "declaration-block-no-redundant-longhand-properties": [true, {
+      "ignoreShorthands": [
+        "/flex/",
+        "/font/",
+        "/transition/",
+        "/animation/"
+      ],
+      "severity": "error"
+    }],
+    "declaration-no-important": [true, {
+      "message": "Don't anger the cascade gods! Avoid !important at all costs."
+    }],
+
+    "declaration-block-single-line-max-declarations": 1,
+
+    "selector-max-empty-lines": 0,
+    "selector-max-specificity": ["0,5,0", {
+      "message": "Avoid overspecified selectors"
+    }],
+    "selector-no-vendor-prefix": true,
+
+    "media-feature-name-no-vendor-prefix": true,
+
+    "at-rule-no-vendor-prefix": true,
+
+    "comment-word-blacklist": [
+      ["/^TODO/", "/^FIX/"], {
+        "message": "Can this TODO be remedied before pushing?"
+      }
+    ],
+
+    "max-nesting-depth": [3, {
+      "message": "Avoid 'Inception' nesting of more than 3 levels deep."
+    }],
+    "no-unknown-animations": true,
+
+    "font-family-name-quotes": "always-where-recommended",
+
+    "font-weight-notation": "numeric",
+
+    "function-comma-space-after": "always",
+    "function-comma-space-before": "never",
+    "function-max-empty-lines": 0,
+    "function-parentheses-newline-inside": "always-multi-line",
+    "function-parentheses-space-inside": "never",
+    "function-url-quotes": "always",
+    "function-whitespace-after": "always",
+
+    "number-leading-zero": "never",
+    "number-no-trailing-zeros": true,
+
+    "string-quotes": "double",
+
+    "length-zero-no-unit": true,
+
+    "unit-case": "lower",
+
+    "value-keyword-case": "lower",
+
+    "value-list-comma-space-after": "always-single-line",
+    "value-list-comma-space-before": "never",
+    "value-list-max-empty-lines": 0,
+
+    "property-case": "lower",
+
+    "declaration-bang-space-after": "never",
+    "declaration-bang-space-before": "always",
+    "declaration-colon-space-after": "always-single-line",
+    "declaration-colon-space-before": "never",
+
+    "declaration-block-semicolon-newline-after": "always",
+    "declaration-block-semicolon-newline-before": "never-multi-line",
+    "declaration-block-semicolon-space-before": "never",
+    "declaration-block-trailing-semicolon": "always",
+
+    "block-closing-brace-empty-line-before": "never",
+    "block-closing-brace-newline-after": "always-multi-line",
+    "block-closing-brace-newline-before": "always-multi-line",
+    "block-closing-brace-space-before": "always-single-line",
+    "block-opening-brace-newline-after": "always-multi-line",
+    "block-opening-brace-space-before": "always-single-line",
+
+    "selector-attribute-brackets-space-inside": "never",
+    "selector-attribute-operator-space-after": "never",
+    "selector-attribute-operator-space-before": "never",
+    "selector-attribute-quotes": "always",
+    "selector-combinator-space-after": "always",
+    "selector-combinator-space-before": "always",
+    "selector-descendant-combinator-no-non-space": true,
+    "selector-pseudo-class-case": "lower",
+    "selector-pseudo-class-parentheses-space-inside": "never",
+    "selector-pseudo-element-case": "lower",
+    "selector-pseudo-element-colon-notation": "double",
+    "selector-type-case": "lower",
+
+    "selector-list-comma-newline-after": "always",
+    "selector-list-comma-newline-before": "never-multi-line",
+    "selector-list-comma-space-before": "never",
+
+    "rule-empty-line-before": ["always", {
+      "except": [
+        "first-nested"
+      ],
+      "ignore": [
+        "after-comment"
+      ]
+    }],
+
+    "media-feature-colon-space-after": "always",
+    "media-feature-colon-space-before": "never",
+    "media-feature-name-case": "lower",
+    "media-feature-parentheses-space-inside": "never",
+    "media-feature-range-operator-space-after": "always",
+    "media-feature-range-operator-space-before": "always",
+
+    "media-query-list-comma-newline-after": "always-multi-line",
+    "media-query-list-comma-newline-before": "never-multi-line",
+    "media-query-list-comma-space-before": "never",
+
+    "at-rule-empty-line-before": ["always", {
+      "except": [
+        "first-nested"
+      ],
+      "ignore": [
+        "after-comment",
+        "blockless-after-blockless"
+      ]
+    }],
+    "at-rule-name-case": "lower",
+    "at-rule-name-space-after": "always-single-line",
+    "at-rule-semicolon-newline-after": "always",
+    "at-rule-semicolon-space-before": "never",
+
+    "comment-whitespace-inside": "always",
+
+    "indentation": [2, {
+      "baseIndentLevel": 1,
+      "ignore": [
+        "param",
+        "value"
+      ],
+      "severity": "error"
+    }],
+    "max-empty-lines": 5,
+    "no-eol-whitespace": true,
+    "no-missing-end-of-source-newline": true,
+    "no-empty-first-line": true
+  }
+}
