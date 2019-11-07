@@ -86,7 +86,7 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: 🎨 Lint - SCSS
-        run: npm run stylelint"
+        run: npm run stylelint
 
   unit-test-affected:
     name: 🧪 Unit Tests Affected
