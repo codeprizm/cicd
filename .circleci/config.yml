@@ -28,15 +28,6 @@ jobs:
       - *npm_install
       - run: npm run lint
       - *save_cache
-  stylelint:
-    <<: *job_defaults
-    steps:
-      - checkout
-      - restore_cache:
-          key: *cache_key
-      - *npm_install
-      - run: npm run stylelint
-      - *save_cache
   build:
     <<: *job_defaults
     steps:
@@ -82,9 +73,6 @@ workflows:
       - ts-lint:
           requires:
             - build
-      - stylelint:
-          requires:
-            - build
       - unittest:
           requires:
             - build
@@ -99,9 +87,6 @@ workflows:
               only:
                 - /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(-[a-zA-Z\d][-a-zA-Z.\d]*)?(\+[a-zA-Z\d][-a-zA-Z.\d]*)?$/
       - ts-lint:
-          requires:
-            - build
-      - stylelint:
           requires:
             - build
       - unittest:
