@@ -14,6 +14,9 @@ jobs:
       - name: Cache node modules
         uses: actions/cache@preview
         id: cache
+        env:
+          cache-key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}   # will extend the use of this cache key if works 
+          cache-path: ~/.npm
         with:
           path: node_modules
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
@@ -23,7 +26,14 @@ jobs:
       - name: Install Packages
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci
-
+  
+  tempjob:
+    name: Temp Job
+    runs-on: ubuntu-latest
+    needs: [install]
+    steps:
+      - run: echo ${{needs.install.env.cache-key}} ${{needs.install.env.cache-path}}
+        
   build:
     name: 🛠 Build Affected
     runs-on: ubuntu-latest
